@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">IBM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#" th:href="@{/listaClientes}">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#about"
+					th:href="@{/listaClientes}">Cliente</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+			
+				
+				<ul class="list-group">
+					<li class="list-group-item active" th:text="${cliente.nombre}"></li>
+				
+				</ul>
+				
+			
+				<table
+					class="table table-bordered table-striped my-4">
+					<thead class="thead-inverse">
+						<tr>
+						   <th>numeroTarjeta</th>
+							<th>ccv</th>
+							<th>tipoTarjeta</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="tarjeta: ${cliente.tarjetas}">
+							<td th:text="${tarjeta.numeroTarjeta}"></td>
+							<td th:text="${tarjeta.ccv}"></td>
+							<td th:text="${tarjeta.tipoTarjeta}"></td>
+						</tr>
+					</tbody>
+
+				</table>
+				
+				
+
+			</div>
+		</div>
+
+	</div>
+
+	<footer></footer>
+</body>
+</html>
